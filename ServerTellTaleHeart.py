@@ -19,12 +19,14 @@ class CursesWindow(object):
         print("Exit")
 def DrawBeat(objScreen,Xcoord,LineHeight):
     heartPattern = [0,1,1,-1,-1,0,0,0,-1,-1,5,5,5,-5,-7,0,1,1,1,0,0,1,1,1,0,0,-1,-1,-1,0,0]
-    i = 0
     Xcoord += 1
+    i = 0
     LastCoord = LineHeight
     while i < len(heartPattern):
         if Xcoord >= objScreen.getmaxyx()[1]:
             Xcoord = 0
+            objScreen.erase()
+            objScreen.refresh()
         if heartPattern[i]==0:
             objScreen.addstr(LastCoord,Xcoord,'#')
             objScreen.refresh()
